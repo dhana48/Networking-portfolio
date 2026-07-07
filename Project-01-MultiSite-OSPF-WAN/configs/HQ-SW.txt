@@ -1,0 +1,30 @@
+HQ SWITCH
+
+vlan 10
+ name Finance
+
+vlan 20
+ name Management
+
+## Access Ports
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 20
+
+interface FastEthernet0/5
+ switchport mode access
+ switchport access vlan 20
+
+## Trunk Port to HQ Router
+
+interface FastEthernet0/1
+ switchport mode trunk
