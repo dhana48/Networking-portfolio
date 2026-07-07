@@ -1,0 +1,42 @@
+MUMBAI ROUTER — ABR (AREA 0 + AREA 1)
+
+## WAN Interface to HQ 
+
+interface GigabitEthernet0/0
+ ip address 172.16.1.2 255.255.255.252
+ ip ospf message-digest-key 1 md5 Cisco123
+ ip ospf authentication message-digest
+ no shutdown
+
+## WAN Interface to Delhi 
+
+interface GigabitEthernet0/1
+ ip address 172.16.3.1 255.255.255.252
+ ip ospf message-digest-key 1 md5 Cisco123
+ ip ospf authentication message-digest
+ no shutdown
+
+## ROAS Sub-interfaces
+
+interface GigabitEthernet0/2
+ no shutdown
+
+interface GigabitEthernet0/2.10
+ encapsulation dot1Q 10
+ ip address 10.1.10.1 255.255.255.0
+ ip helper-address 10.0.10.1
+ no shutdown
+
+interface GigabitEthernet0/2.20
+ encapsulation dot1Q 20
+ ip address 10.1.20.1 255.255.255.0
+ ip helper-address 10.0.20.1
+ no shutdown
+
+## OSPF Configuration 
+
+router ospf 1
+ network 172.16.1.0 0.0.0.3 area 0
+ network 172.16.3.0 0.0.0.3 area 0
+ network 10.1.10.0 0.0.0.255 area 1
+ network 10.1.20.0 0.0.0.255 area 1
