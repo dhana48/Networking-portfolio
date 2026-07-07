@@ -1,0 +1,80 @@
+HQ ROUTER — AREA 0 (BACKBONE)
+
+
+ROAS Sub-interfaces (Router-on-a-Stick) 
+
+interface GigabitEthernet0/0
+ no shutdown
+
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 10.0.10.1 255.255.255.0
+ ip helper-address 10.0.10.1
+ no shutdown
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 10.0.20.1 255.255.255.0
+ no shutdown
+
+WAN Interfaces 
+
+interface GigabitEthernet0/1
+ ip address 172.16.1.1 255.255.255.252
+ ip ospf message-digest-key 1 md5 Cisco123
+ ip ospf authentication message-digest
+ no shutdown
+
+interface GigabitEthernet0/2
+ ip address 172.16.2.1 255.255.255.252
+ ip ospf message-digest-key 1 md5 Cisco123
+ ip ospf authentication message-digest
+ no shutdown
+
+OSPF Configuration
+
+router ospf 1
+ router-id 1.1.1.1
+ network 10.0.10.0 0.0.0.255 area 0
+ network 10.0.20.0 0.0.0.255 area 0
+ network 172.16.1.0 0.0.0.3 area 0
+ network 172.16.2.0 0.0.0.3 area 0
+
+DHCP Server (Centralized at HQ)
+
+ip dhcp excluded-address 10.0.10.1 10.0.10.10
+ip dhcp excluded-address 10.0.20.1 10.0.20.10
+ip dhcp excluded-address 10.1.10.1 10.1.10.10
+ip dhcp excluded-address 10.1.20.1 10.1.20.10
+ip dhcp excluded-address 10.2.10.1 10.2.10.10
+ip dhcp excluded-address 10.2.20.1 10.2.20.10
+
+ip dhcp pool HQ-FINANCE
+ network 10.0.10.0 255.255.255.0
+ default-router 10.0.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool HQ-MANAGEMENT
+ network 10.0.20.0 255.255.255.0
+ default-router 10.0.20.1
+ dns-server 8.8.8.8
+
+ip dhcp pool MUMBAI-HR
+ network 10.1.10.0 255.255.255.0
+ default-router 10.1.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool MUMBAI-IT
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.1
+ dns-server 8.8.8.8
+
+ip dhcp pool DELHI-HR
+ network 10.2.10.0 255.255.255.0
+ default-router 10.2.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool DELHI-IT
+ network 10.2.20.0 255.255.255.0
+ default-router 10.2.20.1
+ dns-server 8.8.8.8
