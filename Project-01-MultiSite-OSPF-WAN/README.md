@@ -172,7 +172,6 @@ show ip ospf neighbor
 
 Command
 
-```bash
 show ip route
 
 ![HQ Route](Screenshots/11-routing-table-hq-normal.jpeg)
