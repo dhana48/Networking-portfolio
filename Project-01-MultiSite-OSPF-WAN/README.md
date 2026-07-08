@@ -174,10 +174,27 @@ Command
 
 show ip route
 
+Routing table of HQ router
+
+
 ![HQ Route](Screenshots/11-routing-table-hq-normal.jpeg)
+
+
+Routing table of Mumbai router
+
+
 ![Mumbai Route](Screenshots/12-routing-table-mumbai-normal.jpeg)
+
+Routing table of Delhi router 
+
+
 ![Delhi Route](Screenshots/13-routing-table-delhi-normal.jpeg)
+
+Routing table of HQ router (after ospf multi-area)
+
+
 ![HQ Route Restored](Screenshots/22-routing-table-hq-restored.jpeg)
+
 
 ---
 
