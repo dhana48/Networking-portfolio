@@ -175,10 +175,10 @@ Command
 ```bash
 show ip route
 
-![Route](Screenshots/11-routing-table-hq-normal.jpeg)
-![Route](Screenshots/12-routing-table-mumbai-normal.jpeg)
-![Route](Screenshots/13-routing-table-delhi-normal.jpeg)
-![Route](Screenshots/22-routing-table-hq-restored.jpeg)
+![HQ Route](Screenshots/11-routing-table-hq-normal.jpeg)
+![Mumbai Route](Screenshots/12-routing-table-mumbai-normal.jpeg)
+![Delhi Route](Screenshots/13-routing-table-delhi-normal.jpeg)
+![HQ Route Restored](Screenshots/22-routing-table-hq-restored.jpeg)
 
 ---
 
