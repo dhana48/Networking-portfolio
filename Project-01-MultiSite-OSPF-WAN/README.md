@@ -225,13 +225,23 @@ After restoring the interface, OSPF converged back to the optimal path.
 # ✅ Verification 
 
 Ping was sent from mumbai to HQ
+
+
 ![Verify](Screenshots/15-ping-mumbai-to-hq.jpeg)
 
+
+
 Ping was sent from HQ to Mumbai
+
+
 ![Verify](Screenshots/16-ping-hq-to-mumbai.jpeg)
 
+
 Ping was sent from Mumbai to Delhi
+
+
 ![Verify](Screenshots/17-ping-mumbai-to-delhi.jpeg)
+
 
 ---
 
