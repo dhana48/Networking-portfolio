@@ -1,0 +1,21 @@
+SW4
+
+#show running-config
+Building configuration...
+
+hostname SW4
+
+vlan 60
+ name Guest
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 60
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 60
+
