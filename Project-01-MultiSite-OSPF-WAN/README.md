@@ -147,8 +147,10 @@ If one WAN link fails, OSPF automatically reroutes traffic using the alternate p
 
 ## 4️⃣ Router-on-a-Stick
 
-HQ ROUTER — AREA 0 (BACKBONE)
 
+### HQ Router — Area 0 (Backbone)
+
+```bash
 interface GigabitEthernet0/0
  no shutdown
 
@@ -162,6 +164,7 @@ interface GigabitEthernet0/0.20
  encapsulation dot1Q 20
  ip address 10.0.20.1 255.255.255.0
  no shutdown
+```
 
 ## 5️⃣ DHCP Configuration
 
