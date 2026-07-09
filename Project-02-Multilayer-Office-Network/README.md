@@ -18,15 +18,16 @@ The complete enterprise topology is shown below.
 
 # 🎯 Project Objectives
 
- -Design a scalable multilayer office network
- -Configure multiple VLANs for different departments
- -Configure Trunk links between Access and Core switches
- -Configure EtherChannel between Core Switches
- -Configure SVIs for Inter-VLAN Routing
- -Configure Centralized DHCP Services
- -Configure NAT for Internet Access
- -Configure ACLs for Guest VLAN Security
- -Verify end-to-end communication between VLANs
+- Design and implement a multilayer office network for ABC Technologies.
+- Segment departments using VLANs 
+- Configure trunk links between Access and Core switches for VLAN communication.
+- Implement Layer 3 switching using SVIs for inter-VLAN routing.
+- Configure LACP EtherChannel between Core switches 
+- Deploy centralized DHCP services in enterprise router
+- Configure static routing and default routing for Internet connectivity.
+- Implement NAT/PAT to allow internal users to access the Internet.
+- Apply ACL security policies to control communication between departments.
+- Verify end-to-end connectivity
 
 ---
 
@@ -440,6 +441,10 @@ Network Address Translation (NAT) was configured on the Enterprise Router to all
 
 # 🔐 Access Control Lists (ACL)
 
+- Guest VLAN cannot access HR. 
+- Guest VLAN cannot access Finance.
+- Guest VLAN cannot access Management.
+
 ```bash
 access-list 1 permit 192.168.10.0 0.0.0.255
 access-list 1 permit 192.168.20.0 0.0.0.255
@@ -448,8 +453,8 @@ access-list 1 permit 192.168.40.0 0.0.0.255
 access-list 1 permit 192.168.50.0 0.0.0.255
 access-list 1 permit 192.168.60.0 0.0.0.255
 
-MLS(config)# interface vlan 60
-MLS(config-if)# ip access-group 1 in
+MLS2(config)# interface vlan 60
+MLS2(config-if)# ip access-group 1 in
 ```
 ACLs were configured to restrict traffic from the Guest VLAN while allowing authorized communication across the enterprise network.
 
