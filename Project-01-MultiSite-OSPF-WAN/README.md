@@ -126,13 +126,10 @@ If one WAN link fails, OSPF automatically reroutes traffic using the alternate p
 
 ## 2️⃣ VLAN Configuration
 
-![VLAN](Screenshots/01-vlan-brief-hq-sw.png) 
-
 
 ![VLAN](Screenshots/02-vlan-brief-mumbai-sw.png)
 
 
-![VLAN](Screenshots/03-vlan-brief-delhi-sw.png)
 
 ---
 
@@ -188,14 +185,6 @@ Routing table of HQ router
 
 
 ![HQ Route](Screenshots/11-routing-table-hq-normal.jpeg)
-
-
-
-Routing table of Mumbai router
-
-
-![Mumbai Route](Screenshots/12-routing-table-mumbai-normal.jpeg)
-
 
 
 Routing table of Delhi router 
