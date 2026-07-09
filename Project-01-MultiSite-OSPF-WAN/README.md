@@ -206,6 +206,47 @@ interface GigabitEthernet0/2.20
 
 ## 5️⃣ DHCP Configuration
 
+DHCP Server (Centralized at HQ)
+
+```bash
+ip dhcp excluded-address 10.0.10.1
+ip dhcp excluded-address 10.0.20.1
+ip dhcp excluded-address 10.1.10.1
+ip dhcp excluded-address 10.1.20.1
+ip dhcp excluded-address 10.2.10.1
+ip dhcp excluded-address 10.2.20.1
+
+ip dhcp pool HQ-Finance
+ network 10.0.10.0 255.255.255.0
+ default-router 10.0.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool HQ-Management
+ network 10.0.20.0 255.255.255.0
+ default-router 10.0.20.1
+ dns-server 8.8.8.8
+
+ip dhcp pool Mumbai-HR
+ network 10.1.10.0 255.255.255.0
+ default-router 10.1.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool Mumbai-IT
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.1
+ dns-server 8.8.8.8
+
+ip dhcp pool Delhi-HR
+ network 10.2.10.0 255.255.255.0
+ default-router 10.2.10.1
+ dns-server 8.8.8.8
+
+ip dhcp pool Delhi-IT
+ network 10.2.20.0 255.255.255.0
+ default-router 10.2.20.1
+ dns-server 8.8.8.8
+```
+
 ---
 
 ## 6️⃣ DHCP Relay
