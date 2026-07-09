@@ -259,11 +259,7 @@ interface FastEthernet0/3
 
 LACP EtherChannel was configured between MLS1 and MLS2 to provide:
 
- -Redundancy
- -Increased Bandwidth
- -Load Balancing
-
-MLS1
+ MLS1
 
 ```bash
 interface FastEthernet0/4
@@ -440,12 +436,6 @@ Verification:
 
 Network Address Translation (NAT) was configured on the Enterprise Router to allow internal private IP addresses to communicate with external networks.
 
-Features:
-
- -PAT (Overload)
- -Inside/Outside Interfaces
- -Internet Access
-
 ---
 
 # 🔐 Access Control Lists (ACL)
@@ -494,19 +484,18 @@ Successful communication between HR and Management VLAN.
 
 # 🎯 Skills Demonstrated
 
- -Enterprise Network Design
- -VLAN Implementation
- -IEEE 802.1Q Trunking
- -EtherChannel (LACP)
- -Inter-VLAN Routing
- -Switch Virtual Interfaces (SVIs)
- -OSPF Dynamic Routing
- -DHCP Configuration
- -NAT Configuration
- -ACL Configuration
- -Internet Connectivity
- -Routing Verification
- -End-to-End Network Troubleshooting
+ - Enterprise Network Design
+ - VLAN Implementation
+ - IEEE 802.1Q Trunking
+ - EtherChannel (LACP)
+ - Inter-VLAN Routing
+ - Switch Virtual Interfaces (SVIs)
+ - OSPF Dynamic Routing
+ - DHCP Configuration
+ - NAT Configuration
+ - ACL Configuration
+ - Routing Verification
+ - End-to-End Network Troubleshooting
 
 ---
 
