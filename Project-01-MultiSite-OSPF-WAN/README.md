@@ -152,8 +152,6 @@ If one WAN link fails, OSPF automatically reroutes traffic using the alternate p
 
 ## 5️⃣ DHCP Configuration
 
-![DHCP](screenshots/dhcp.png)
-
 ---
 
 ## 6️⃣ DHCP Relay
