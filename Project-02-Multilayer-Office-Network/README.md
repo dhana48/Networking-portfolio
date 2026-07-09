@@ -203,8 +203,6 @@ interface FastEthernet0/3
  switchport access vlan 60
 ```
 
-![SW4 VLAN](Screenshots/04-vlan-brief-sw4.png)
-
 ---
 
 # 🔗 Trunk Configuration
@@ -459,6 +457,9 @@ access-list 1 permit 192.168.30.0 0.0.0.255
 access-list 1 permit 192.168.40.0 0.0.0.255
 access-list 1 permit 192.168.50.0 0.0.0.255
 access-list 1 permit 192.168.60.0 0.0.0.255
+
+MLS(config)# interface vlan 60
+MLS(config-if)# ip access-group 1 in
 ```
 ACLs were configured to restrict traffic from the Guest VLAN while allowing authorized communication across the enterprise network.
 
