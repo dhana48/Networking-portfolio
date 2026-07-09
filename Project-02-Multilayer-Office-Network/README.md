@@ -97,6 +97,7 @@ The network contains six VLANs.
 
 ## SW1 VLAN Configuration
 
+```bash
 vlan 10
  name HR
 vlan 20
@@ -120,7 +121,7 @@ interface FastEthernet0/4
 interface FastEthernet0/5
  switchport mode access
  switchport access vlan 20
-
+```
 
 ![SW1 VLAN](Screenshots/01-vlan-brief-sw1.png)
 
@@ -128,6 +129,7 @@ interface FastEthernet0/5
 
 ## SW2 VLAN Configuration
 
+```bash
 vlan 30
  name Sales
 vlan 40
@@ -151,14 +153,15 @@ interface FastEthernet0/4
 interface FastEthernet0/5
  switchport mode access
  switchport access vlan 40
+```
  
-
 ![SW2 VLAN](Screenshots/02-vlan-brief-sw2.png)
 
 ---
 
 ## SW3 VLAN Configuration
 
+```bash
 vlan 50
  name Management
 
@@ -176,7 +179,7 @@ interface FastEthernet0/3
 interface FastEthernet0/4
  switchport mode access
  switchport access vlan 50
-
+```
 
 ![SW3 VLAN](Screenshots/03-vlan-brief-sw3.png)
 
@@ -184,6 +187,7 @@ interface FastEthernet0/4
 
 ## SW4 VLAN Configuration
 
+```bash
 vlan 60
  name Guest
 
@@ -197,7 +201,7 @@ interface FastEthernet0/2
 interface FastEthernet0/3
  switchport mode access
  switchport access vlan 60
-
+```
 
 ![SW4 VLAN](Screenshots/04-vlan-brief-sw4.png)
 
@@ -209,6 +213,7 @@ Trunk links were configured between the Access Switches and Core Switches to all
 
 ## MLS1 Trunk Ports
 
+```bash
 ip routing
 
 vlan 10
@@ -225,7 +230,7 @@ interface FastEthernet0/2
 
 interface FastEthernet0/3
  switchport mode trunk
-
+```
 
 ![MLS1 Trunk](Screenshots/05-trunk-mls1.png)
 
@@ -233,6 +238,7 @@ interface FastEthernet0/3
 
 ## MLS2 Trunk Ports
 
+```bash
 ip routing
 
 vlan 50
@@ -245,7 +251,7 @@ interface FastEthernet0/2
 
 interface FastEthernet0/3
  switchport mode trunk
-
+```
 
 ![MLS2 Trunk](Screenshots/06-trunk-mls2.png)
 
@@ -261,6 +267,7 @@ LACP EtherChannel was configured between MLS1 and MLS2 to provide:
 
 MLS1
 
+```bash
 interface FastEthernet0/4
  channel-group 1 mode active
 
@@ -269,9 +276,11 @@ interface FastEthernet0/5
 
 interface Port-channel1
  switchport mode trunk
+```
 
  MLS2
 
+```bash
  interface FastEthernet0/4
  channel-group 1 mode active
 
@@ -280,7 +289,8 @@ interface FastEthernet0/5
 
 interface Port-channel1
  switchport mode trunk
- 
+ ```
+
 Verification:
 
 ![EtherChannel](Screenshots/07-etherchannel-summary.png)
@@ -293,6 +303,7 @@ Inter-VLAN Routing is performed on the Multilayer Switches using Switch Virtual 
 
 ## MLS1 SVIs
 
+```bash
 interface FastEthernet0/1
  no switchport
  ip address 10.0.0.2 255.255.255.252
@@ -319,6 +330,7 @@ interface Vlan40
  no shutdown
 
 ip route 0.0.0.0 0.0.0.0 10.0.0.1
+```
 
 ![MLS1 SVI](Screenshots/08-svi-mls1.png)
 
@@ -326,6 +338,7 @@ ip route 0.0.0.0 0.0.0.0 10.0.0.1
 
 ## MLS2 SVIs
 
+```bash
 interface FastEthernet0/1
  no switchport
  ip address 10.0.0.6 255.255.255.252
@@ -342,6 +355,7 @@ interface Vlan60
  no shutdown
 
 ip route 0.0.0.0 0.0.0.0 10.0.0.5
+```
 
 ![MLS2 SVI](Screenshots/09-svi-mls2.png)
 
@@ -351,7 +365,7 @@ ip route 0.0.0.0 0.0.0.0 10.0.0.5
 
 Centralized DHCP services were configured to dynamically assign IP addresses to all VLANs.
 
-
+```bash
 ip dhcp excluded-address 192.168.10.1
 ip dhcp excluded-address 192.168.20.1
 ip dhcp excluded-address 192.168.30.1
@@ -402,6 +416,7 @@ interface GigabitEthernet0/2
  ip nat inside
  duplex auto
  speed auto
+```
 
 Verification:
 
@@ -437,13 +452,14 @@ Features:
 
 # 🔐 Access Control Lists (ACL)
 
+```bash
 access-list 1 permit 192.168.10.0 0.0.0.255
 access-list 1 permit 192.168.20.0 0.0.0.255
 access-list 1 permit 192.168.30.0 0.0.0.255
 access-list 1 permit 192.168.40.0 0.0.0.255
 access-list 1 permit 192.168.50.0 0.0.0.255
 access-list 1 permit 192.168.60.0 0.0.0.255
-
+```
 ACLs were configured to restrict traffic from the Guest VLAN while allowing authorized communication across the enterprise network.
 
 ---
