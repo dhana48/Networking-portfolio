@@ -1,0 +1,46 @@
+MLS2
+
+#show running-config
+Building configuration...
+
+hostname MLS2
+
+ip routing
+
+vlan 50
+ name Management
+vlan 60
+ name Guest
+
+interface FastEthernet0/1
+ no switchport
+ ip address 10.0.0.6 255.255.255.252
+ no shutdown
+
+interface FastEthernet0/2
+ switchport mode trunk
+
+interface FastEthernet0/3
+ switchport mode trunk
+
+interface FastEthernet0/4
+ channel-group 1 mode active
+
+interface FastEthernet0/5
+ channel-group 1 mode active
+
+interface Port-channel1
+ switchport mode trunk
+
+interface Vlan50
+ ip address 192.168.50.1 255.255.255.0
+ ip helper-address 10.0.0.5
+ no shutdown
+
+interface Vlan60
+ ip address 192.168.60.1 255.255.255.0
+ ip helper-address 10.0.0.5
+ no shutdown
+
+ip route 0.0.0.0 0.0.0.0 10.0.0.5
+
