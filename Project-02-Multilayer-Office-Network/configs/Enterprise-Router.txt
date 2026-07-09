@@ -1,0 +1,75 @@
+Enterprise
+
+#show running-config
+Building configuration...
+
+hostname Enterprise
+
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.30.1
+ip dhcp excluded-address 192.168.40.1
+ip dhcp excluded-address 192.168.50.1
+ip dhcp excluded-address 192.168.60.1
+ip dhcp excluded-address 192.168.40.10
+
+ip dhcp pool HR
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.40.10
+ip dhcp pool Finance
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 192.168.40.10
+ip dhcp pool Sales
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ dns-server 192.168.40.10
+ip dhcp pool IT
+ network 192.168.40.0 255.255.255.0
+ default-router 192.168.40.1
+ dns-server 192.168.40.10
+ip dhcp pool Management
+ network 192.168.50.0 255.255.255.0
+ default-router 192.168.50.1
+ dns-server 192.168.40.10
+ip dhcp pool Guest
+ network 192.168.60.0 255.255.255.0
+ default-router 192.168.60.1
+ dns-server 192.168.40.10
+
+interface GigabitEthernet0/0
+ ip address 203.0.113.2 255.255.255.252
+ ip nat outside
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/1
+ ip address 10.0.0.1 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/2
+ ip address 10.0.0.5 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+
+ip nat inside source list 1 interface GigabitEthernet0/0 overload
+
+ip route 0.0.0.0 0.0.0.0 203.0.113.1
+ip route 192.168.10.0 255.255.255.0 10.0.0.2
+ip route 192.168.20.0 255.255.255.0 10.0.0.2
+ip route 192.168.30.0 255.255.255.0 10.0.0.2
+ip route 192.168.40.0 255.255.255.0 10.0.0.2
+ip route 192.168.50.0 255.255.255.0 10.0.0.6
+ip route 192.168.60.0 255.255.255.0 10.0.0.6
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+access-list 1 permit 192.168.30.0 0.0.0.255
+access-list 1 permit 192.168.40.0 0.0.0.255
+access-list 1 permit 192.168.50.0 0.0.0.255
+access-list 1 permit 192.168.60.0 0.0.0.255
+
