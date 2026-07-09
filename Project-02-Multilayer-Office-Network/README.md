@@ -1,10 +1,10 @@
-# 🌐 Project 01 – Enterprise Campus Network
+# 🌐 Project 02 – Multilayer-office-network
 
 ## 📖 Project Overview
 
-This project simulates a real-world **Enterprise Campus Network** using Cisco Packet Tracer. The network follows a hierarchical design consisting of an Enterprise Router, two Multilayer Switches (Core Layer), four Access Switches, multiple VLANs, centralized DHCP services, OSPF dynamic routing, EtherChannel, NAT, and ACLs.
+This project simulates a real-world **Multilayer-oofice-network** using Cisco Packet Tracer. The network follows a hierarchical design consisting of an Enterprise Router, two Multilayer Switches (Core Layer), four Access Switches, multiple VLANs, centralized DHCP services, EtherChannel, NAT, and ACLs.
 
-The objective of this project is to demonstrate enterprise-level LAN design, secure inter-VLAN communication, dynamic routing, Internet connectivity, and traffic control using Cisco networking technologies.
+The objective of this project is to demonstrate enterprise-level LAN design, secure inter-VLAN communication, Internet connectivity, and traffic control using Cisco networking technologies.
 
 ---
 
@@ -18,32 +18,30 @@ The complete enterprise topology is shown below.
 
 # 🎯 Project Objectives
 
- Design a scalable Enterprise Campus Network
- Configure multiple VLANs for different departments
- Configure Trunk links between Access and Core switches
- Configure EtherChannel between Core Switches
- Configure SVIs for Inter-VLAN Routing
- Configure OSPF Dynamic Routing
- Configure Centralized DHCP Services
- Configure NAT for Internet Access
- Configure ACLs for Guest VLAN Security
- Verify end-to-end communication between VLANs
+ -Design a scalable multilayer office network
+ -Configure multiple VLANs for different departments
+ -Configure Trunk links between Access and Core switches
+ -Configure EtherChannel between Core Switches
+ -Configure SVIs for Inter-VLAN Routing
+ -Configure Centralized DHCP Services
+ -Configure NAT for Internet Access
+ -Configure ACLs for Guest VLAN Security
+ -Verify end-to-end communication between VLANs
 
 ---
 
 # 🛠️ Technologies Used
 
- Cisco Packet Tracer
- VLANs
- IEEE 802.1Q Trunking
- Multilayer Switching
- Switch Virtual Interfaces (SVIs)
- OSPF
- EtherChannel (LACP)
- DHCP
- NAT
- ACL
- Static Default Route
+ -Cisco Packet Tracer
+ -VLANs
+ -IEEE 802.1Q Trunking
+ -Multilayer Switching
+ -Switch Virtual Interfaces (SVIs)
+ -EtherChannel (LACP)
+ -DHCP
+ -NAT
+ -ACL
+ -Static Default Route
 
 ---
 
@@ -51,36 +49,34 @@ The complete enterprise topology is shown below.
 
 ### Enterprise Router
 
- Connects the enterprise network to the ISP
- Performs NAT
- Advertises routes using OSPF
- Provides Internet connectivity
+ -Connects the enterprise network to the ISP
+ -Performs NAT
+ -Provides Internet connectivity
 
 ### Core Layer
 
- MLS1
- MLS2
+ -MLS1
+ -MLS2
 
 Responsibilities:
 
- Inter-VLAN Routing
- OSPF Routing
- EtherChannel
- DHCP Relay
- High-speed backbone connectivity
+ -Inter-VLAN Routing
+ -OSPF Routing
+ -EtherChannel
+ -DHCP Relay
 
 ### Access Layer
 
- SW1
- SW2
- SW3
- SW4
+ -SW1
+ -SW2
+ -SW3
+ -SW4
 
 Responsibilities:
 
- VLAN segmentation
- End device connectivity
- Trunk uplinks to Core
+ -VLAN segmentation
+ -End device connectivity
+ -Trunk uplinks to Core
 
 ---
 
@@ -101,11 +97,61 @@ The network contains six VLANs.
 
 ## SW1 VLAN Configuration
 
+vlan 10
+ name HR
+vlan 20
+ name Finance
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 20
+
+interface FastEthernet0/5
+ switchport mode access
+ switchport access vlan 20
+
+
 ![SW1 VLAN](Screenshots/01-vlan-brief-sw1.png)
 
 ---
 
 ## SW2 VLAN Configuration
+
+vlan 30
+ name Sales
+vlan 40
+ name IT
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 30
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 30
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 40
+
+interface FastEthernet0/5
+ switchport mode access
+ switchport access vlan 40
+ 
 
 ![SW2 VLAN](Screenshots/02-vlan-brief-sw2.png)
 
@@ -113,11 +159,45 @@ The network contains six VLANs.
 
 ## SW3 VLAN Configuration
 
+vlan 50
+ name Management
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 50
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 50
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 50
+
+
 ![SW3 VLAN](Screenshots/03-vlan-brief-sw3.png)
 
 ---
 
 ## SW4 VLAN Configuration
+
+vlan 60
+ name Guest
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 60
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 60
+
 
 ![SW4 VLAN](Screenshots/04-vlan-brief-sw4.png)
 
@@ -129,11 +209,43 @@ Trunk links were configured between the Access Switches and Core Switches to all
 
 ## MLS1 Trunk Ports
 
+ip routing
+
+vlan 10
+ name HR
+vlan 20
+ name Finance
+vlan 30
+ name Sales
+vlan 40
+ name IT
+
+interface FastEthernet0/2
+ switchport mode trunk
+
+interface FastEthernet0/3
+ switchport mode trunk
+
+
 ![MLS1 Trunk](Screenshots/05-trunk-mls1.png)
 
 ---
 
 ## MLS2 Trunk Ports
+
+ip routing
+
+vlan 50
+ name Management
+vlan 60
+ name Guest
+
+interface FastEthernet0/2
+ switchport mode trunk
+
+interface FastEthernet0/3
+ switchport mode trunk
+
 
 ![MLS2 Trunk](Screenshots/06-trunk-mls2.png)
 
@@ -143,10 +255,32 @@ Trunk links were configured between the Access Switches and Core Switches to all
 
 LACP EtherChannel was configured between MLS1 and MLS2 to provide:
 
- Redundancy
- Increased Bandwidth
- Load Balancing
+ -Redundancy
+ -Increased Bandwidth
+ -Load Balancing
 
+MLS1
+
+interface FastEthernet0/4
+ channel-group 1 mode active
+
+interface FastEthernet0/5
+ channel-group 1 mode active
+
+interface Port-channel1
+ switchport mode trunk
+
+ MLS2
+
+ interface FastEthernet0/4
+ channel-group 1 mode active
+
+interface FastEthernet0/5
+ channel-group 1 mode active
+
+interface Port-channel1
+ switchport mode trunk
+ 
 Verification:
 
 ![EtherChannel](Screenshots/07-etherchannel-summary.png)
@@ -159,11 +293,55 @@ Inter-VLAN Routing is performed on the Multilayer Switches using Switch Virtual 
 
 ## MLS1 SVIs
 
+interface FastEthernet0/1
+ no switchport
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+
+interface Vlan10
+ ip address 192.168.10.1 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shutdown
+
+interface Vlan20
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shutdown
+
+interface Vlan30
+ ip address 192.168.30.1 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shutdown
+
+interface Vlan40
+ ip address 192.168.40.1 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shutdown
+
+ip route 0.0.0.0 0.0.0.0 10.0.0.1
+
 ![MLS1 SVI](Screenshots/08-svi-mls1.png)
 
 ---
 
 ## MLS2 SVIs
+
+interface FastEthernet0/1
+ no switchport
+ ip address 10.0.0.6 255.255.255.252
+ no shutdown
+
+interface Vlan50
+ ip address 192.168.50.1 255.255.255.0
+ ip helper-address 10.0.0.5
+ no shutdown
+
+interface Vlan60
+ ip address 192.168.60.1 255.255.255.0
+ ip helper-address 10.0.0.5
+ no shutdown
+
+ip route 0.0.0.0 0.0.0.0 10.0.0.5
 
 ![MLS2 SVI](Screenshots/09-svi-mls2.png)
 
@@ -173,21 +351,61 @@ Inter-VLAN Routing is performed on the Multilayer Switches using Switch Virtual 
 
 Centralized DHCP services were configured to dynamically assign IP addresses to all VLANs.
 
+
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.30.1
+ip dhcp excluded-address 192.168.40.1
+ip dhcp excluded-address 192.168.50.1
+ip dhcp excluded-address 192.168.60.1
+ip dhcp excluded-address 192.168.40.10
+
+ip dhcp pool HR
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.40.10
+ip dhcp pool Finance
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 192.168.40.10
+ip dhcp pool Sales
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ dns-server 192.168.40.10
+ip dhcp pool IT
+ network 192.168.40.0 255.255.255.0
+ default-router 192.168.40.1
+ dns-server 192.168.40.10
+ip dhcp pool Management
+ network 192.168.50.0 255.255.255.0
+ default-router 192.168.50.1
+ dns-server 192.168.40.10
+ip dhcp pool Guest
+ network 192.168.60.0 255.255.255.0
+ default-router 192.168.60.1
+ dns-server 192.168.40.10
+
+interface GigabitEthernet0/0
+ ip address 203.0.113.2 255.255.255.252
+ ip nat outside
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/1
+ ip address 10.0.0.1 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/2
+ ip address 10.0.0.5 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+
 Verification:
 
 ![DHCP Bindings](Screenshots/10-dhcp-bindings.png)
-
----
-
-# 🛰️ Dynamic Routing (OSPF)
-
-OSPF was configured between:
-
- Enterprise Router
- MLS1
- MLS2
-
-This allows automatic route advertisement throughout the network.
 
 ---
 
@@ -211,13 +429,20 @@ Network Address Translation (NAT) was configured on the Enterprise Router to all
 
 Features:
 
- PAT (Overload)
- Inside/Outside Interfaces
- Internet Access
+ -PAT (Overload)
+ -Inside/Outside Interfaces
+ -Internet Access
 
 ---
 
 # 🔐 Access Control Lists (ACL)
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+access-list 1 permit 192.168.30.0 0.0.0.255
+access-list 1 permit 192.168.40.0 0.0.0.255
+access-list 1 permit 192.168.50.0 0.0.0.255
+access-list 1 permit 192.168.60.0 0.0.0.255
 
 ACLs were configured to restrict traffic from the Guest VLAN while allowing authorized communication across the enterprise network.
 
@@ -252,19 +477,19 @@ Successful communication between HR and Management VLAN.
 
 # 🎯 Skills Demonstrated
 
- Enterprise Network Design
- VLAN Implementation
- IEEE 802.1Q Trunking
- EtherChannel (LACP)
- Inter-VLAN Routing
- Switch Virtual Interfaces (SVIs)
- OSPF Dynamic Routing
- DHCP Configuration
- NAT Configuration
- ACL Configuration
- Internet Connectivity
- Routing Verification
- End-to-End Network Troubleshooting
+ -Enterprise Network Design
+ -VLAN Implementation
+ -IEEE 802.1Q Trunking
+ -EtherChannel (LACP)
+ -Inter-VLAN Routing
+ -Switch Virtual Interfaces (SVIs)
+ -OSPF Dynamic Routing
+ -DHCP Configuration
+ -NAT Configuration
+ -ACL Configuration
+ -Internet Connectivity
+ -Routing Verification
+ -End-to-End Network Troubleshooting
 
 ---
 
@@ -273,3 +498,13 @@ Successful communication between HR and Management VLAN.
 This project demonstrates the implementation of a scalable Enterprise Campus Network using Cisco networking technologies. It integrates Layer 2 and Layer 3 networking concepts including VLAN segmentation, Inter-VLAN Routing, EtherChannel, OSPF, DHCP, NAT, and ACLs to provide secure and efficient communication across the enterprise.
 
 The successful verification of routing tables, VLAN communication, DHCP address allocation, and end-to-end connectivity confirms the correct operation of the network and highlights practical enterprise networking skills applicable to real-world environments.
+
+# 👩‍💻 Author
+
+Dhanalakshmi.B
+
+Computer Science Engineer 
+
+Aspiring Network Engineer
+
+Currently studying CCNA, Linux, and Enterprise Networking.
