@@ -1,0 +1,25 @@
+SW3
+
+#show running-config
+Building configuration...
+
+hostname SW3
+
+vlan 50
+ name Management
+
+interface FastEthernet0/1
+ switchport mode trunk
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 50
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 50
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 50
+
