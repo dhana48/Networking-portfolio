@@ -32,16 +32,16 @@ The complete enterprise topology is shown below.
 
 # 🛠️ Technologies Used
 
- -Cisco Packet Tracer
- -VLANs
- -IEEE 802.1Q Trunking
- -Multilayer Switching
- -Switch Virtual Interfaces (SVIs)
- -EtherChannel (LACP)
- -DHCP
- -NAT
- -ACL
- -Static Default Route
+ - Cisco Packet Tracer
+- VLANs
+- IEEE 802.1Q Trunking
+- Multilayer Switching
+- Switch Virtual Interfaces (SVIs)
+- EtherChannel (LACP)
+- DHCP
+- NAT
+- ACL
+- Static Default Route
 
 ---
 
@@ -49,34 +49,34 @@ The complete enterprise topology is shown below.
 
 ### Enterprise Router
 
- -Connects the enterprise network to the ISP
- -Performs NAT
- -Provides Internet connectivity
+ - Connects the enterprise network to the ISP
+ - Performs NAT
+ - Provides Internet connectivity
 
 ### Core Layer
 
- -MLS1
- -MLS2
+ - MLS1
+ - MLS2
 
 Responsibilities:
 
- -Inter-VLAN Routing
- -OSPF Routing
- -EtherChannel
- -DHCP Relay
+ - Inter-VLAN Routing
+ - OSPF Routing
+ - EtherChannel
+ - DHCP Relay
 
 ### Access Layer
 
- -SW1
- -SW2
- -SW3
- -SW4
+ - SW1
+ - SW2
+ - SW3
+ - SW4
 
 Responsibilities:
 
- -VLAN segmentation
- -End device connectivity
- -Trunk uplinks to Core
+ - VLAN segmentation
+ - End device connectivity
+ - Trunk uplinks to Core
 
 ---
 
