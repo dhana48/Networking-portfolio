@@ -1,0 +1,37 @@
+ISP-Router
+
+ISP#show running-config
+Building configuration...
+
+hostname ISP
+
+interface GigabitEthernet0/0
+ ip address 50.50.50.1 255.255.255.0
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/1
+ ip address 203.0.113.1 255.255.255.252
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+
+interface Vlan1
+ no ip address
+ shutdown
+
+
+ip route 0.0.0.0 0.0.0.0 50.50.50.10 
+ip route 203.0.113.0 255.255.255.252 203.0.113.2 
+ip route 192.168.10.0 255.255.255.0 203.0.113.2 
+ip route 192.168.20.0 255.255.255.0 203.0.113.2 
+ip route 192.168.30.0 255.255.255.0 203.0.113.2 
+ip route 192.168.40.0 255.255.255.0 203.0.113.2 
+ip route 192.168.50.0 255.255.255.0 203.0.113.2 
+ip route 192.168.60.0 255.255.255.0 203.0.113.2 
+
