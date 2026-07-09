@@ -185,6 +185,25 @@ interface GigabitEthernet0/2.20
  no shutdown
 ```
 
+## Delhi Router - ROAS Subinterfaces
+
+```bash
+interface GigabitEthernet0/2
+ no shutdown
+
+interface GigabitEthernet0/2.10
+ encapsulation dot1Q 10
+ ip address 10.3.10.1 255.255.255.0
+ ip helper-address 10.0.10.1
+ no shutdown
+
+interface GigabitEthernet0/2.20
+ encapsulation dot1Q 20
+ ip address 10.3.20.1 255.255.255.0
+ ip helper-address 10.0.20.1
+ no shutdown
+```
+
 ## 5️⃣ DHCP Configuration
 
 ---
