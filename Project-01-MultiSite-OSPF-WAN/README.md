@@ -120,13 +120,13 @@ If one WAN link fails, OSPF automatically reroutes traffic using the alternate p
 
 ## 1️⃣ Network Topology
 
-![Topology](screenshots/00-topology-overview.png)
+![Topology](Screenshots/00-topology-overview.png)
 
 ---
 
 ## 2️⃣ VLAN Configuration
 
-![VLAN](Screenshots/01-vlan-brief-hq-sw.png)
+![VLAN](Screenshots/01-vlan-brief-hq-sw.png) 
 
 
 ![VLAN](Screenshots/02-vlan-brief-mumbai-sw.png)
