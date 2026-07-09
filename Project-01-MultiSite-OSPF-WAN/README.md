@@ -166,6 +166,25 @@ interface GigabitEthernet0/0.20
  no shutdown
 ```
 
+## Mumbai Router - ROAS Sub-interfaces
+
+```bash
+interface GigabitEthernet0/2
+ no shutdown
+
+interface GigabitEthernet0/2.10
+ encapsulation dot1Q 10
+ ip address 10.2.10.1 255.255.255.0
+ ip helper-address 10.0.10.1
+ no shutdown
+
+interface GigabitEthernet0/2.20
+ encapsulation dot1Q 20
+ ip address 10.2.20.1 255.255.255.0
+ ip helper-address 10.0.20.1
+ no shutdown
+```
+
 ## 5️⃣ DHCP Configuration
 
 ---
